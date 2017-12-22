@@ -1,0 +1,136 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="divport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>ChooseSchool</title>
+    <link rel="stylesheet" href="~/css/bootstrap.css" />
+    <script src="~/js/jquery-1.11.3.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <link href="~/css/ChooseSchool.css" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var pid = 1;
+            var cid = 11;
+            $("#province").click(function () {
+                if ($(this).hasClass("cur") == true) {
+                    return;
+                }
+                else {
+                    $("#noSch").hide();
+                    $("#province").addClass("cur");
+                    if ($("#city").hasClass("cur") == true) $("#city").removeClass("cur");
+                    if ($("#school").hasClass("cur") == true) $("#school").removeClass("cur");
+                    $(".list").empty();
+                    $.get("/api/province", function (data, status) {
+                        for (var i in data) {
+                            $(".list").append("<div id='" + data[i].id + "' class='ptr'>" + data[i].name + "</div>");
+                        }
+                    });
+                }
+            });
+            $("#city").click(function () {
+                if ($(this).hasClass("cur") == true) {
+                    return;
+                }
+                else {
+                    $("#noSch").hide();
+                    if ($("#province").hasClass("cur") == true) $("#province").removeClass("cur");
+                    $("#city").addClass("cur");
+                    if ($("#school").hasClass("cur") == true) $("#school").removeClass("cur");
+                    $(".list").empty();
+                    $.get("/api/city/" + pid, function (data, status) {
+                        for (var i in data) {
+                            $(".list").append("<div id='" + data[i].id + "' class='ctr'>" + data[i].name + "</div>");
+                        }
+                    });
+                }
+            });
+            $("#school").click(function () {
+                if ($("#school").hasClass("cur") == true) {
+                    return;
+                }
+                else {
+                    if (window.localStorage.getItem("type") == "teacher")
+                        $("#noSch").show();
+                    if ($("#province").hasClass("cur") == true) $("#province").removeClass("cur");
+                    if ($("#city").hasClass("cur") == true) $("#city").removeClass("cur");
+                    $("#school").addClass("cur");
+                    $(".list").empty();
+                    $.get("/api/school/" + cid, function (data, status) {
+                        for (var i in data) {
+                            $(".list").append("<div id='" + data[i].id + "' class='str'>" + data[i].name + "</div>");
+                        }
+                    });
+                }
+            });
+            $("#noSch").click(function () {
+                $(window).attr("location", '/Teacher/CreateSchool');
+            });
+            function province() {
+                pid = $(this).attr("id");
+                $("#province").removeClass("cur");
+                $("#city").addClass("cur");
+                $(".list").empty();
+                $("#noSch").hide();
+                $("#province").text($(this).text());
+                $.get("/api/city/" + pid, function (data, status) {
+                    for (var i in data) {
+                        $(".list").append("<div id='" + data[i].id + "' class='ctr'>" + data[i].name + "</div>");
+                    }
+                });
+            }
+            function city() {
+                cid = $(this).attr("id");
+                $("#city").removeClass("cur");
+                $("#school").addClass("cur");
+                $(".list").empty();
+                $("#city").text($(this).text());
+                if (window.localStorage.getItem("type") == "teacher")
+                    $("#noSch").show();
+                $.get("/api/school/" + cid, function (data, status) {
+                    for (i in data) {
+                        $(".list").append("<div id='" + data[i].id + "' class='str'>" + data[i].name + "</div>");
+                    }
+                });
+            }
+            function school() {
+                window.localStorage.setItem("school", $(this).text());
+                window.history.go(-1);
+            }
+            $(".list").on('click', '.ptr', province);
+            $(".list").on('click', '.ctr', city);
+            $(".list").on('click', '.str', school);
+        });
+    </script>
+</head>
+<body class="body">
+    <div class="topbox">
+        <div class="fixTop">
+            <img src="../images/bulb.png" class="bulbimg" />
+            <strong class="title0">请选择您的学校</strong>
+            <img class="img" src="../images/background.jpg" />
+        </div>
+        <!--这个class与js有关 实现列表切换-->
+        <div class="fixTop title">
+            <div id="province" class="cur">省份</div>
+            <div id="city">州市</div>
+            <div id="school">学校</div>
+        </div>
+        <div class="list">
+            <div id="1" class="ptr">福建</div>
+            <div id="2" class="ptr">广东</div>
+            <div id="3" class="ptr">广西</div>
+            <div class="ptr">天津</div>
+            <div class="ptr">江苏</div>
+            <div class="ptr">安徽</div>
+        </div>
+        <div id="noSch" class="str" style="display:none;"><a href="#">无学校？选择创建</a></div>
+        </div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+C:\Users\lxt\source\repos\Xmu.Crms.LQR\Xmu.Crms.LQR\obj\Debug\netcoreapp2.0\Xmu.Crms.LQR.csprojResolveAssemblyReference.cache
+C:\Users\lxt\source\repos\Xmu.Crms.LQR\Xmu.Crms.LQR\obj\Debug\netcoreapp2.0\Xmu.Crms.LQR.csproj.CoreCompileInputs.cache
+C:\Users\lxt\source\repos\Xmu.Crms.LQR\Xmu.Crms.LQR\obj\Debug\netcoreapp2.0\Xmu.Crms.LQR.AssemblyInfoInputs.cache
+C:\Users\lxt\source\repos\Xmu.Crms.LQR\Xmu.Crms.LQR\obj\Debug\netcoreapp2.0\Xmu.Crms.LQR.AssemblyInfo.cs
+C:\Users\lxt\source\repos\Xmu.Crms.LQR\Xmu.Crms.LQR\bin\Debug\netcoreapp2.0\Xmu.Crms.LQR.deps.json
+C:\Users\lxt\source\repos\Xmu.Crms.LQR\Xmu.Crms.LQR\bin\Debug\netcoreapp2.0\Xmu.Crms.LQR.runtimeconfig.json
+C:\Users\lxt\source\repos\Xmu.Crms.LQR\Xmu.Crms.LQR\bin\Debug\netcoreapp2.0\Xmu.Crms.LQR.runtimeconfig.dev.json
+C:\Users\lxt\source\repos\Xmu.Crms.LQR\Xmu.Crms.LQR\bin\Debug\netcoreapp2.0\Xmu.Crms.LQR.dll
+C:\Users\lxt\source\repos\Xmu.Crms.LQR\Xmu.Crms.LQR\bin\Debug\netcoreapp2.0\Xmu.Crms.LQR.pdb
+C:\Users\lxt\source\repos\Xmu.Crms.LQR\Xmu.Crms.LQR\bin\Debug\netcoreapp2.0\Xmu.Crms.Shared.dll
+C:\Users\lxt\source\repos\Xmu.Crms.LQR\Xmu.Crms.LQR\bin\Debug\netcoreapp2.0\Xmu.Crms.Shared.pdb
+C:\Users\lxt\source\repos\Xmu.Crms.LQR\Xmu.Crms.LQR\obj\Debug\netcoreapp2.0\Xmu.Crms.LQR.dll
+C:\Users\lxt\source\repos\Xmu.Crms.LQR\Xmu.Crms.LQR\obj\Debug\netcoreapp2.0\Xmu.Crms.LQR.pdb

@@ -1,0 +1,45 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="divport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <title>CreateSchool</title>
+    <link rel="stylesheet" href="~/css/bootstrap.css" />
+    <script src="~/js/jquery-1.11.3.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <link href="~/css/CreateSchoolUI.css" rel="stylesheet" type="text/css" />
+    <script>
+        $(document).ready(function () {
+            $(".createButton").click(function () {
+                if ($(".inputSchool").val() == null)
+                    alert("学校不能为空！");
+                window.localStorage.setItem("school", $(".inputSchool").val());
+                window.history.go(-2);
+            });
+        });
+    </script>
+</head>
+<body class="body">
+    <div class="PictureDiv">
+        <!-- 背景图的div -->
+        <img class="bulb" src="../images/bulb.png" />
+        <img src="../images/background.jpg" class="Picture" />
+        <div class="title">创建学校</div>
+    </div>
+    <div class="hrDiv"></div>
+    <!--细线，hr不好设置css，用一个高度很小的div来代替-->
+    <div class="mainView">
+        <span class="font1">省份：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;福建省</span>
+        <span class="font2">州市：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;厦门市</span>
+        <span class="schoolName">学校名：</span>
+        <input class="inputSchool"/>
+        <img src="../images/warn.png" class="tipIcon" />
+        <span class="tipFont">提交后不能再修改</span>
+        <button class="createButton">创建</button>
+    </div>
+</body>
+</html>

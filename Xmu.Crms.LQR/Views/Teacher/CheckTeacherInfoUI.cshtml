@@ -1,0 +1,60 @@
+﻿@{
+    Layout = null;
+}
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="divport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>CheckStudentInfoUI</title>
+    <link rel="stylesheet" href="~/css/bootstrap.css" />
+    <script src="~/js/jquery-1.11.3.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <link href="~/css/CheckTeacherInfo.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.ajax({
+                type: 'GET',
+                url: "/api/me",
+                headers: {
+                    type: "teacher"
+                },
+                contentType: "application/json; charset=utf-8",
+                success: function (data, status) {
+                    $(".name").text("姓名：" + data.name);
+                    $(".name1").text("姓名："+ data.name);
+                    $(".teacherID").text("教工号：" + data.number);
+                    $(".ID").text("教工号：" + data.number);
+                    $(".phone1").text("手机号：" + data.phone);
+                    $(".school").text("学校：" + data.school.name);
+                }
+            });
+            $(".exitBtn").click(function () {
+                window.localStorage.clear();
+                $(window).attr("location", '/Home/LoginUI');
+            });
+            $(".UnbindBtn").click(function () {
+                var confirmChoose = window.confirm("确定解除绑定吗？");
+                if (confirmChoose) {
+                    $(window).attr("location", '/Home/ChooseCharacter');
+                }
+            });
+        });
+    </script>
+</head>
+<body class="body">
+	<div class="PictureDiv"><!-- 背景图的div -->
+		<img class="user" src="/images/user.png" />  
+		<div class="unbindTip">点击头像修改</div>
+		<img src="/images/bg.png" class="Picture"/>  
+		　　<div class="name" ></div> 
+		<div class="teacherID" ></div> 
+	</div>
+	<div class="phone1"></div>
+	<div class="ID"></div>
+	<div class="school"></div>
+	<div class="name1"></div>
+	<button class="exitBtn">退出登录</button>
+	<button class="UnbindBtn">解绑账号</button>
+</body>
+</html>

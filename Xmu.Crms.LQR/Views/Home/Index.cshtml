@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="~/js/jquery-1.11.3.min.js"></script>
+    <script>
+        $(function () {
+            var protocol = location.protocol === "https:" ? "wss:" : "ws:";
+            var Uri = protocol + "//" + window.location.host + "?sid=" + parseInt(Math.random()*1000+1);//"/ws";
+            var socket = new WebSocket(Uri);
+            socket.onopen = e => {
+                console.log("socket opened", e);
+            };
+
+            socket.onclose = function (e) {
+                console.log("socket closed", e);
+            };
+            $("#send").click(function () {
+                var msgObj = {
+                    SenderID: "111",
+                    ReceiverID: "111",
+                    MessageType: "text",
+                    Content: $("#text").val()
+                };
+                socket.send(JSON.stringify(msgObj));
+            })
+            //function to receive from server.
+            socket.onmessage = function (e) {
+                console.log("Message:" + e.data);
+                var msgObj = JSON.parse(e.data);
+                $('#msgs').append(msgObj.Content + '<br />');
+            };
+
+            socket.onerror = function (e) {
+                console.error(e.data);
+            };
+        });
+    </script>
+</head>
+<body>
+    <div id="msgs"></div>
+    <input id="text" />
+    <button id="send">发送</button>
+</body>
+</html>
+
